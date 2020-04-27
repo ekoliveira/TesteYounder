@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <div class="modal-title sessao">Editar Cliente</div>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="formCliente">
+        <div class="form-row">
+          <div class="form-group col-9">
+            <label>Nome:</label>
+            <input formControlName="Nome" type="text" class="form-control" onkeypress="return /[a-zA-Z ]/i.test(event.key)" required>
+          </div>
+          <div class="form-group col-auto">
+            <label>Data de Nascimento:</label>
+            <input formControlName="DataNascimento" type="date" class="form-control" pattern="99/99/9999" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-auto">
+            <label>CPF:</label>
+            <input formControlName="Cpf" type="text" placeholder="000.000.000-00" class="form-control" appMaskCpf maxlength="14" required>
+          </div>
+          <div class="form-group col-auto">
+            <label>RG:</label>
+            <input formControlName="Rg" type="text" placeholder="00.000.000-0" mask="00.000.000-A" class="form-control" required>
+          </div>
+        </div>
+      </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-outline-primary" type="button" [disabled]="disableSubmit()" id="udateCliente" (click)="updateCliente(formCliente.value)">Editar</button>
+</div>
